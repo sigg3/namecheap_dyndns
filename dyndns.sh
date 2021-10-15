@@ -48,6 +48,9 @@ IP_HIST="$HOME/.wan_ip_log"
 
 # Read password if the supplied arg is a file
 if [ -f "$N_PASSWORD" ] ; then
+	if head -1 "$N_PASSWORD" 2>&1 >> /dev/null | grep -iq "Permission denied" ; then
+		echo "Don't have permission to read $N_PASSWORD" ; exit 1
+	fi
 	N_PASSWORD=$( tail -n 1 "$N_PASSWORD" | tr -d "\r\n ")
 fi
 
