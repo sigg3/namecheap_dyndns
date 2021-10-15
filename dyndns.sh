@@ -3,14 +3,15 @@
 # and request DNS record change from Namecheap using curl
 # Cf. Namecheap support @ https://tinyurl.com/78cj2pd8
 
-USAGE="$(basename $0) <subdomain> <domain> <dyn dyns pass> [verbose]
+USAGE=$(basename $0)
+USAGE="$USAGE <subdomain> <domain> <dyn dyns pass> [verbose]
 
 How to update:
-  * TLD:       $(basename $0) @ domain.ext mydyndnspassword
-  * subdomain  $(basename $0) subdomain domain.ext mydyndnspassword
-  * wildcard   $(basename $0) * domain.ext mydyndnspassword
+  * TLD:       $USAGE @ domain.ext mydyndnspassword
+  * subdomain  $USAGE subdomain domain.ext mydyndnspassword
+  * wildcard   $USAGE * domain.ext mydyndnspassword
 
-$(basename $0) will only request DNS record change if WAN ip has changed.
+$USAGE will only request DNS record change if WAN ip has changed.
 Use -v flag or a 1 as the last arg to run verbosely."
 
 # Parse CLI args
@@ -40,6 +41,11 @@ IP_HIST="$HOME/.wan_ip_log"
 # Check curl requirement
 if ! command -v curl >> /dev/null ; then
 	echo "Sorry, no curl in PATH" ; exit 1
+fi
+
+# Check connectivity
+if ! ping -c 1 opendns.com >> /dev/null ; then
+	echo "Can't reach OpenDNS resolver. No internet?" ; exit 1
 fi
 
 # Get old and current WAN IP address
