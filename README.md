@@ -3,7 +3,7 @@ Simple cronjob for updating your namecheap Dynamic A+ DNS record when your WAN i
 
 Run the script without arguments for usage info.
 <pre>
-dyndns.sh <subdomain> <domain> <password | FILE> [verbose]
+dyndns.sh &lt;subdomain> &lt;domain> &lt;password | FILE> [verbose]
 
 How to update:
   * TLD:       dyndns.sh @ domain.ext mydyndnspassword
