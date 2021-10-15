@@ -23,10 +23,11 @@ USAGE="$USAGE <subdomain> <domain> <password | FILE> [verbose]
 How to update:
   * TLD:       $USAGE @ domain.ext mydyndnspassword
   * subdomain  $USAGE subdomain domain.ext mydyndnspassword
-  * wildcard   $USAGE * domain.ext mydyndnspassword
+  * wildcard   $USAGE * domain.ext ~/.conf/ncheap_dns_pass
 
-Password is required. It can be either a string of the Namecheap
-Dynamic DNS password or a FILE containing the same (safer).
+Password field required. It can be either a string or full path
+to a file containing the password (safer). Note: This is not your
+Namecheap user account password, but the Dynamic DNS password.
 
 $USAGE will only request DNS record change if WAN ip has changed.
 Use -v flag or a 1 as the last arg to run verbosely."
@@ -44,6 +45,11 @@ fi
 
 # Set history file
 IP_HIST="$HOME/.wan_ip_log"
+
+# Read password if the supplied arg is a file
+if [ -f "$N_PASSWORD" ] ; then
+	N_PASSWORD=$( tail -n 1 "$N_PASSWORD" | tr -d "\r\n ")
+fi
 
 # SETTINGS (uncomment for debugging)
 #cat <<EOT
