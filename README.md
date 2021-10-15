@@ -14,7 +14,7 @@ will update the wiki.github.com subdomain A+ DNS record to point to the WAN ip o
 
 # Automation using cron
 
-The script is intended to be run as a cronjob every 10-15 minutes. To avoid putting your password in plaintext in crontab, simply create a file in e.g. /root/.my_namecheap_dyndnspass and pass the full path as the password parameter.
+The script is intended to be run as a cronjob every 10-15 minutes. To avoid putting your password in plaintext in crontab, simply create a file in e.g. /root/.namecheap_dyndns and pass the full path as the password parameter.
 
 <pre>$ sudo echo "71b559581bdde8dbb4f8756575321ea3" > /root/.namecheap_dyndns
 $ sudo crontab -e</pre>
