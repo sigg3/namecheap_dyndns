@@ -1,8 +1,23 @@
 #!/bin/bash
 # This script will check current WAN ip address with dig
-# and request DNS record change from Namecheap using curl
+# and request DNS record change from Namecheap using curl.
+# For usage info, run the script without any arguments.
+# Written by Sigge Smelror (C) 2021, GNU GPL v. 3+
+#
+# dyndns.sh is free software: you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation, version 3 or newer.
+#
+# dyndns.sh is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# URL: <https://www.gnu.org/licenses/gpl-3.0.txt>
+#
+# Submit bugs at: <https://github.com/sigg3/namecheap_dyndns/issues>
 
-USAGE=$(basename $0)
+
+USAGE=$(basename "$0")
 USAGE="$USAGE <subdomain> <domain> <password | FILE> [verbose]
 
 How to update:
