@@ -1,15 +1,17 @@
 #!/bin/bash
 # This script will check current WAN ip address with dig
 # and request DNS record change from Namecheap using curl
-# Cf. Namecheap support @ https://tinyurl.com/78cj2pd8
 
 USAGE=$(basename $0)
-USAGE="$USAGE <subdomain> <domain> <dyn dyns pass> [verbose]
+USAGE="$USAGE <subdomain> <domain> <password | FILE> [verbose]
 
 How to update:
   * TLD:       $USAGE @ domain.ext mydyndnspassword
   * subdomain  $USAGE subdomain domain.ext mydyndnspassword
   * wildcard   $USAGE * domain.ext mydyndnspassword
+
+Password is required. It can be either a string of the Namecheap
+Dynamic DNS password or a FILE containing the same (safer).
 
 $USAGE will only request DNS record change if WAN ip has changed.
 Use -v flag or a 1 as the last arg to run verbosely."
